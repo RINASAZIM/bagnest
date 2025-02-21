@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BagNest - Select Your New Perfect Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background-color: #b40f7d;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        header .logo span {
+            color: whitesmoke;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        nav a.active {
+            color: rgb(222, 184, 213);
+            font-weight: bold;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 180px 10%;
+            background-color: #e1e5f2;
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            color: #9b4a95;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            margin: 20px 0;
+            font-size: 18px;
+            color: #6d6d6d;
+        }
+
+        .hero-text button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #ca0c91;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero-text button:hover {
+            background-color: rgb(223, 118, 206);
+        }
+
+        .hero-image img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #b40f7d;
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Bag<span>Nest</span></div>
+        <nav>
+            <a href="/main/" class="active">Home</a>
+            <a href="/viewproduct/">Shop</a>
+            <a href="/cart/">Cart</a>
+            <a href="/login/">Login</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Select Your New <br>Perfect Style</h1>
+            <p>Discover the perfect bags for any occasion. Shop now and elevate your style.</p>
+            <a href="/viewproduct/">
+                <button>Shop Now</button>
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="women printed canvas multicolor shoulder bag.webp" alt="bag">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 BagNest. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

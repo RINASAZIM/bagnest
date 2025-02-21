@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+            background-color: #b22186;
+        }
+
+        header nav a.active {
+            color: rgb(232, 40, 178);
+            font-weight: bold;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        header .logo span {
+            color: #c43394;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        #contact {
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 40px 0;
+            flex: 1;
+            /* Allow the contact section to grow to fill space */
+        }
+
+        .contact-section {
+            background-color: #ab2b80;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px;
+            width: 80%;
+            max-width: 600px;
+            margin: 80px auto;
+            border-radius: 8px;
+        }
+
+        .contact-info {
+            font-size: 1em;
+            margin: 5px 0;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .contact-header {
+            font-size: 20px;
+            color: #b62d9d;
+            line-height: 1.2;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .copyright {
+            font-size: 0.9em;
+            color: #cccccc;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #b22186;
+            color: #fff;
+            font-size: 14px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Bag <span>Nest</span></div>
+        <nav>
+            <a href="/main/">Home</a>
+            <a href="/viewproduct/">Shop</a>
+            <a href="/cart/">Cart</a>
+            <a href="/login/">Login</a>
+            <a href="/contact/" class="active">Contact</a>
+
+        </nav>
+    </header>
+
+    <section id="contact">
+        <div class="contact-section">
+            <div class="contact-header">
+                <h3>CONTACT</h3>
+            </div>
+            <div class="contact-info">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:rinaambali@gmail.com">bagnest@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+919846801515">+91 9846801515</a></p>
+            </div>
+            <div class="social-icons">
+                <a href="https://linkedin.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram.png" alt="LinkedIn">
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter">
+                </a>
+                <a href="https://github.com" target="_blank">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="GitHub">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Bag Nest. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

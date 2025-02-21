@@ -1,0 +1,207 @@
+<!-- productmain.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Now - Bag Nest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f4f6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            background-color: #bd1590;
+            padding: 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            margin: 0 10px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #e1e5f2;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #13035c;
+        }
+
+        .hero p {
+            color: #555;
+            font-size: 1.2rem;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #b71396;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: #a01086;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            background-color: #d421a7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            justify-content: center;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+        }
+
+        .product h3 {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .product button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #d421a7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #bb1c8f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #cf2f9a;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Bag <span>Nest</span></div>
+        <nav>
+            <a href="/main/">Home</a>
+            <a href="/viewproduct/" class="active">Shop</a>
+            <a href="/cart/">Cart</a>
+            <a href="/login/">Login</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Discover Your Perfect Bags</h1>
+        <p>Explore our wide range of bag collections and find the one that matches your style.</p>
+        <a href="/viewproduct/">
+            <button>Shop Now</button>
+        </a>
+    </section>
+
+    <div class="search-bar">
+        <form method="GET" action="">
+            <input type="text" name="search" placeholder="Search for a product..." value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="products">
+        {% for i in cr %}
+        <div class="product">
+            <h3>{{ i.name }}</h3>
+            {% if i.image %}
+            <img src="{{ i.image.url }}" alt="{{ i.name }}" width="300px">
+            {% else %}
+            <p>No image available</p>
+            {% endif %}
+            <h4>Rs.{{i.price}}</h4>
+            <!-- <form action="{% url 'add_to_cart' i.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">Add to Cart</button>
+            </form> -->
+            {% if request.user.is_authenticated %}
+    <form action="{% url 'add_to_cart' i.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Add to Cart</button>
+    </form>
+{% else %}
+    <p><a href="{% url 'login' %}" style="color: red; font-weight: bold;">Login to add to cart</a></p>
+{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/logoutu/" onclick="logout()">logout</a>
+    <footer>
+        &copy; 2025 Bag Nest. All rights reserved.
+    </footer>
+    <script>
+        function logout() {
+            alert("Successfully logged out!");
+        
+        }
+    </script>
+</body>
+
+</html>

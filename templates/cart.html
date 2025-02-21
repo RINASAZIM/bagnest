@@ -1,0 +1,183 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Wrist Works</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #da16c3;
+            padding: 20px 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav a.active {
+            color: rgb(196, 43, 150);
+            font-weight: bold;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .cart-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(186, 57, 132, 0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item h3 {
+            font-size: 18px;
+        }
+
+        .btn-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #c51992;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .watch-image {
+            width: 100px;
+            height: auto;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        span {
+            color: #b71e8e;
+        }
+
+        .quantity-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-button {
+            padding: 5px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #bc2c89;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .delete-button {
+            padding: 5px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #cf2691;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #e63946;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Bag <span>Nest</span></div>
+        <nav>
+            <a href="/main/">Home</a>
+            <a href="/viewproduct/">Shop</a>
+            <a href="/cart/" class="active">Cart</a>
+            <a href="/login/">Login</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+    </header>
+
+    {% block content %}
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+
+
+
+        {% for item in cart_items %}
+        {% if request.user.is_authenticated %}
+        <form action="{% url 'add_to_cart' item.product.id %}" method="POST">
+            {% csrf_token %}
+            
+        </form>
+        {% else %}
+        <p><a href="{% url 'login' %}" style="color: red; font-weight: bold;">Login to add items</a></p>
+        {% endif %}
+
+        <div class="cart-item">
+            <h3>{{ item.product.name }}</h3>
+            <p>Price: ${{ item.product.price }}</p>
+            <p>Quantity: 
+                <form action="{% url 'update_cart' %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="cart_id" value="{{ item.id }}">
+                    <button type="submit" name="action" value="decrement">-</button>
+                </form>
+                {{ item.quantity }}
+                <form action="{% url 'update_cart' %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="cart_id" value="{{ item.id }}">
+                    <button type="submit" name="action" value="increment">+</button>
+                </form>
+            </p>
+            <p>Total: ${{ item.total_price }}</p>
+            <form action="{% url 'update_cart' %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="cart_id" value="{{ item.id }}">
+                <button type="submit" name="action" value="remove" class="delete-button">Remove</button>
+            </form>
+        </div>
+        {% endfor %}
+
+        <h2>Total Price: ${{ total_price }}</h2>
+        <div class="btn-container">
+            <div class="btn-container">
+                <a href="{% url 'checkout' %}">
+                    <button type="button">Proceed to Checkout</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+</body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 800px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(18, 3, 101, 0.1);
+            max-width: 350px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #040346;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+     
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #d61b8b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        
+        }
+        button:hover {
+            background-color: #c1287f;
+        }
+        h1 {
+            text-align: center;
+            color: #f022b9;
+    
+        }
+    </style>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Enter your name">
+        <label>AGE:</label>
+        <input type="text" name="age">
+
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Enter your email">
+
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Enter your user name">
+        
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Enter your password">
+
+        <label>phone no.</label>
+        <input type="text" name="phone" placeholder="enter your phone no.">
+         
+       
+        <br><br>
+        <button type="submit">Submit</button>
+        <a href="/login/">login</a>
+    </form>
+</body>
+</html>
