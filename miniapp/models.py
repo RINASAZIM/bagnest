@@ -8,24 +8,14 @@ class bag(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to="image/")
     price = models.CharField(max_length=200, null=True)
 
-# class Cart(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)  # Allow null users
-#     product = models.ForeignKey(bag, on_delete=models.CASCADE, related_name="cart_items")
-#     quantity = models.PositiveIntegerField(default=1)
 
-#     def total_price(self):
-#         return self.quantity * int(self.product.price)
-
-#     def __str__(self):
-#         return f"{self.user.username if self.user else 'Guest'} - {self.product.name} ({self.quantity})"
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)  # ✅ Associate with User
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)  # Associate with User
     product = models.ForeignKey(bag, on_delete=models.CASCADE,null=True)
     quantity = models.PositiveIntegerField(default=1,null=True)
     
 
-    # def total_price(self):
-    #     return self.quantity * self.product.price
+  
     def total_price(self):
      return float(self.product.price) * int(self.quantity)
 

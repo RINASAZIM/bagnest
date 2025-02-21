@@ -177,10 +177,7 @@
             <p>No image available</p>
             {% endif %}
             <h4>Rs.{{i.price}}</h4>
-            <!-- <form action="{% url 'add_to_cart' i.id %}" method="POST">
-                {% csrf_token %}
-                <button type="submit">Add to Cart</button>
-            </form> -->
+          
             {% if request.user.is_authenticated %}
     <form action="{% url 'add_to_cart' i.id %}" method="POST">
         {% csrf_token %}

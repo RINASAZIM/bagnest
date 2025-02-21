@@ -42,7 +42,7 @@ def vieww(request):
 
 
 def view_cart(request):
-    cart_items = Cart.objects.filter(user=request.user)  # ✅ Filter by user
+    cart_items = Cart.objects.filter(user=request.user)  
     total_price = sum(item.total_price() for item in cart_items)
     return render(request, "cart.html", {"cart_items": cart_items, "total_price": total_price})
 
@@ -157,25 +157,7 @@ def checkout(request):
     return render(request, "checkout.html", {"cart_items": cart_items, "total_price": total_price})
 
 
-# @login_required
-# def checkout(request):
-#     cart_items = Cart.objects.filter(user=request.user)
 
-#     if not cart_items.exists():
-#         messages.error(request, "Your cart is empty!")
-#         return redirect("cart")
-
-#     for item in cart_items:
-#         PurchaseHistory.objects.create(
-#             user=request.user,
-#             product=item.product,
-#             quantity=item.quantity,
-#             total_price=item.total_price(),
-#         )
-#         item.delete()  # Remove from cart after purchase
-
-#     messages.success(request, "Checkout successful! Your purchase history has been updated.")
-#     return redirect("purchase_history")
 
 
 @login_required
